@@ -4,8 +4,8 @@ import random
 
 def handle_generate_random_position(RandomPositionRequest):
     res = RandomPositionResponse()
-    res.x_random = random.random(RandomPositionRequest.x_min, RandomPositionRequest.x_max)
-    res.y_random = random.randint(RandomPositionRequest.y_min, RandomPositionRequest.y_max)
+    res.x_random = random.uniform(RandomPositionRequest.x_min, RandomPositionRequest.x_max)
+    res.y_random = random.uniform(RandomPositionRequest.y_min, RandomPositionRequest.y_max)
     return res
 
 def random_position_server():
