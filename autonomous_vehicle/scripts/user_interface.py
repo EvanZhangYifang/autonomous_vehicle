@@ -7,6 +7,7 @@ import rospy
 import random
 from geometry_msgs.msg import Twist
 from std_srvs.srv import *
+from autonomous_vehicle.srv import *
 import sys, select, termios, tty
 
 msg = """
@@ -171,18 +172,24 @@ def getKey(key_timeout):
     return key
 
 def set_random_pos():
-    rospy.set_param('des_pos_x', random.uniform(-8,8))
-    rospy.set_param('des_pos_y', random.uniform(-8,8))
-    print('Go to position x: ', rospy.get_param('des_pos_x') ,'y: ', rospy.get_param('des_pos_y'))
+    randomPosition = srv_random_position(-8,8,-8,8)
+    rospy.set_param('des_pos_x', randomPosition.x_random)
+    rospy.set_param('des_pos_y', randomPosition.y_random)
+    print('Go to position x: ', randomPosition.x_random,'y: ', randomPosition.y_random)
 
 
 def vels(speed, turn):
     return "currently:\tspeed %s\tturn %s " % (speed,turn)
 
 if __name__=="__main__":
+
+    global srv_random_position
+
     settings = termios.tcgetattr(sys.stdin)
 
     rospy.init_node('user_interface')
+
+    srv_random_position = rospy.ServiceProxy('/generate_random_position', RandomPosition)
 
     srv_client_control_mode = rospy.ServiceProxy('/control_mode_switch', SetBool)
 
