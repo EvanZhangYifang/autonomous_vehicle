@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from autonomous_vehicle.srv import *
 import rospy
 import random
