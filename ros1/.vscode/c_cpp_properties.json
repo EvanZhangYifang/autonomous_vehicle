@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/yifang/ros_ws/ros1/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/opt/openrobots/include/**",
+        "/opt/openrobots/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,5 @@
+-
+  ros1_package_name: 'autonomous_vehicle'
+  ros1_message_name: 'RandomPosition'
+  ros2_package_name: 'ros1_ros2'
+  ros2_message_name: 'RandomPosition'
