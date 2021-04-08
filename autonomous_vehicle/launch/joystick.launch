@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <node pkg="autonomous_vehicle" type="wall_follow_service.py" name="wall_follower" />
-    <node pkg="autonomous_vehicle" type="go_to_point_service.py" name="go_to_point"/>
-    <node pkg="autonomous_vehicle" type="robot_controller.py" name="robot_controller" />
-    <node pkg="autonomous_vehicle" type="user_interface.py" name="user_interface" output="screen" />
-
-</launch>
