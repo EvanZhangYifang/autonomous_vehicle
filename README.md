@@ -5,12 +5,12 @@
 1. Open three terminal nameing NO1, NO2, NO3, NO4
 
 2. In the terminal NO1, run：
-'''
+```
    cd autonomous_vehicle/ros1
    source ~/ros.sh
    catkin_make
    source devel/setup.bash
-'''
+```
 
 3. In the terminal NO2, run:
    cd autonomous_vehicle/ros2
