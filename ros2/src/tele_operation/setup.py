@@ -21,7 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'user_interface = tele_operation.user_interface:main',
-            'random_pos_server = tele_operation.random_position_server:random_position_server'
+            'random_pos_server = tele_operation.random_position_server:main'
         ],
     },
 )

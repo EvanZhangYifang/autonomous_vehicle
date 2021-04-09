@@ -6,6 +6,7 @@ import time
 from geometry_msgs.msg import Point
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
+from autonomous_vehicle.srv import *
 from tf import transformations
 # import ros service
 from std_srvs.srv import *
@@ -86,12 +87,21 @@ def normalize_angle(angle):
         angle = angle - (2 * math.pi * angle) / (math.fabs(angle))
     return angle
 
+def set_random_pos():
+    # print("marker 1")
+    randomPosition = srv_client_get_random_pos_(-8,8,-8,8)
+    # print("marker 2")
+    rospy.set_param('des_pos_x', randomPosition.x_random)
+    rospy.set_param('des_pos_y', randomPosition.y_random)
+    print('Go to position x: ', randomPosition.x_random,'y: ', randomPosition.y_random)
+
+
 
 def main():
     time.sleep(2)
     global active_
     global regions_, position_, desired_position_, state_, yaw_, yaw_error_allowed_
-    global srv_client_go_to_point_, srv_client_wall_follower_
+    global srv_client_go_to_point_, srv_client_wall_follower_,srv_client_get_random_pos_
 
     rospy.init_node('robot_controller')
 
@@ -104,6 +114,8 @@ def main():
         '/go_to_point_switch', SetBool)
     srv_client_wall_follower_ = rospy.ServiceProxy(
         '/wall_follower_switch', SetBool)
+    srv_client_get_random_pos_ = rospy.ServiceProxy(
+        '/generate_random_position', RandomPosition)
 
     # initialize going to the keyborad contorl
     change_state(2)
@@ -118,6 +130,9 @@ def main():
             continue
         else:
             if state_ == 2:
+                # print("Try to get random position.")
+                set_random_pos()
+                # print("Random position setted.")
                 change_state(0)
             if state_ == 0:
                 if regions_['front'] < 0.2:

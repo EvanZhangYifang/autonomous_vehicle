@@ -26,8 +26,11 @@ set(srv_files
   "srv/RandomPosition.srv"
 )
 
+install(
+  FILES my_mapping_rules.yaml
+  DESTINATION share/tele_interface)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
+rosidl_generate_interfaces(tele_interface
   ${srv_files}
 )
 
