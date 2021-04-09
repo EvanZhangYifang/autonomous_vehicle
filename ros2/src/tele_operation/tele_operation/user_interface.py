@@ -202,22 +202,15 @@ def main():
         print(msg)
         print(vels(speed, turn))
         while True:
-            print('00')
             key = getKey(settings)
-            print('0')
             if key in moveBindings.keys():
-                print('1')
 
                 node.set_control_mode(False)
-
-                print('1.1')
-
                 x = moveBindings[key][0]
                 y = moveBindings[key][1]
                 z = moveBindings[key][2]
                 th = moveBindings[key][3]
             elif key in speedBindings.keys():
-                print('2')
 
                 node.set_control_mode(False)
 
@@ -230,26 +223,12 @@ def main():
                 status = (status + 1) % 15
 
             elif key in randomMove.keys():
-                print('3')
 
-                # node.set_control_mode(False)
                 node.set_control_mode(True)
 
                 print('Switch to random position mode.')
 
-                # node.get_random_pos()
-
-                # while rclpy.ok():
-                #     rclpy.spin_once(node)
-                #     if node.future.done():
-                #         pos_response = node.future.result()
-                #         print(pos_response)
-                #         node.set_random_pos()
-                #         break
-
-                # set_random_pos()
             else:
-                print('4')
 
                 node.set_control_mode(False)
 
@@ -257,6 +236,7 @@ def main():
                 y = 0.0
                 z = 0.0
                 th = 0.0
+                
                 if (key == '\x03'):
                     break
 

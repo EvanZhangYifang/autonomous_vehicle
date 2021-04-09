@@ -26,12 +26,17 @@ set(srv_files
   "srv/RandomPosition.srv"
 )
 
+set(msg_files
+  "msg/TargetPosition.msg"
+)
+
 install(
   FILES my_mapping_rules.yaml
   DESTINATION share/tele_interface)
 
 rosidl_generate_interfaces(tele_interface
   ${srv_files}
+  ${msg_files}
 )
 
 ament_export_dependencies(rosidl_default_runtime)

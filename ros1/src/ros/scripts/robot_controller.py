@@ -88,9 +88,9 @@ def normalize_angle(angle):
     return angle
 
 def set_random_pos():
-    # print("marker 1")
+    print("marker 1")
     randomPosition = srv_client_get_random_pos_(-8,8,-8,8)
-    # print("marker 2")
+    print("marker 2")
     rospy.set_param('des_pos_x', randomPosition.x_random)
     rospy.set_param('des_pos_y', randomPosition.y_random)
     print('Go to position x: ', randomPosition.x_random,'y: ', randomPosition.y_random)

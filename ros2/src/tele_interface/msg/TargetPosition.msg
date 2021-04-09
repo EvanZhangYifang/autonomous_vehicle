@@ -1,0 +1,2 @@
+float32 x_random
+float32 y_random
